@@ -24,7 +24,6 @@ You can only use putchar three times in your code
 mandatory
 Write a program that prints the alphabet in lowercase, followed by a new line.
 
-https://intranet.alxswe.com/projects/213#:~:text=5.%20Numbers,the%20main%20function
 
 6. Numberz
 mandatory
