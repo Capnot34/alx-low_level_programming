@@ -1,22 +1,24 @@
 #include <stdio.h>
 
+
 /**
- * main - Prints a text according number
+ * main - Prints the alphabetic in lower and upper case
  * Return: Always (Success)
  */
 int main(void)
 {
-	char alphabet;
-	
-	for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
+	char c;
+
+	for (c = 'a'; c <= 'z'; c++)
 	{
-	    putchar(alphabet);
+	putchar(c);
 	}
 
-	for (alphabet = 'A'; alphabet <= 'Z'; alphabet++)
+	for (c = 'A'; c <= 'Z'; c++)
 	{
-	    putchar(alphabet);
+	putchar(c);
 	}
 	putchar('\n');
+
 	return (0);
 }
