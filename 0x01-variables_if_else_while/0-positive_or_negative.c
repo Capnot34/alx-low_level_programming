@@ -2,16 +2,12 @@
 #include <time.h>
 #include <stdio.h>
 
-/** main - This is the entry point of the program
- * 
- *We first declare the variable "n" of type "int"
- * seed the random number generator with the current time.
+/**
+ * main - print if the number is positive, zero, or negative
  *
- * Generate a random number between -RAND_MAX/2 and RAND_MAX/2 using rand() function and assign it to n.
- * If n is greater than 0, print "n is positive"
- * Else, if n is equal to 0, print "n is zero".
- * Else if n is less than 0, print "n is negative".
- * End the program and return 0. 
+ * Description: using the main function
+ * this program prints "programming is positive, zero, or negative
+ * Return: 0
  */
 int main(void)
 {
