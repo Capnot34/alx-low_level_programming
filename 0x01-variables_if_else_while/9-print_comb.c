@@ -11,7 +11,7 @@ int main(void)
 	for (hex = 0; hex < 10; hex++)
 	{
 		putchar(hex + '0');
-		if (hex < 9);
+		if (hex < 9)
 		{
 			putchar(',');
 			putchar(' ');
