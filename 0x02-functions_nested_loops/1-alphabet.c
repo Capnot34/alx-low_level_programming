@@ -1,9 +1,7 @@
-#include "main.h"
-
-/**
- * Print_alphabet - function to print alphabets in lower case
+#include "main.h"/**
+ * print_alphabet - function to print abc
  *
- * Return: (Always success)
+ * Return: 0
  */
 void print_alphabet(void)
 {
