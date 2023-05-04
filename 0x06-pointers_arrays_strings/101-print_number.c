@@ -1,31 +1,21 @@
 #include "main.h"
 
 /**
- * *rot13 - encodes a string using rot13
- * @s: string to encode
+ * main - check the code
  *
- * Return: address of s
+ * Return: Always 0.
  */
-
-char *rot13(char *)
+int main(void)
 {
-	int len = strlen(str);
-	char *result = (char *)malloc(len + 1);
-
-	for (int i = 0; i < len; i++)
-	{
-		if ((str[i] >= 'A' && str[i] <= 'M') || (str[i] >= 'a' && str[i] <= 'm'))
-		{
-			result[i] = str[i] + 13;
-		}
-		 else if ((str[i] >= 'N' && str[i] <= 'Z') || (str[i] >= 'n' && str[i] <= 'z'))
-		 {
-			  result[i] = str[i] - 13;
-		 }
-		else {
-			result[i] = str[i];
-		}
-	}
-	result[len] = '\0';
-	return (result)
+	print_number(98);
+	 _putchar('\n');
+	 print_number(402);
+	 _putchar('\n');
+	 print_number(1024);
+	 _putchar('\n');
+	 print_number(0);
+	 _putchar('\n');
+	 print_number(-98);
+	 _putchar('\n');
+	 return (0);
 }
