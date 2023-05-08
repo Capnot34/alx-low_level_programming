@@ -24,31 +24,41 @@ int numLength(int num)
 	return (length);
 }
 /**
- * main - Entry point for the program
- *
- * Description: Calculates and prints the sum of even-valued terms in the
- * Fibonacci sequence whose values do not exceed 4,000,000.
- *
- * Return: Always 0 (success)
+ * main - prints the first 98 fibonaci sequences
+ *  Return: 0
  */
+
 int main(void)
 {
-    int n1 = 1, n2 = 2, n3;
-    long sum = 0;
+	unsigned long f1 = 1, f2 = 2, tmp, mx =
+		100000000, f1o = 0, f2o = 0, tmpo = 0;
+	short int i = 1, initial0s;
 
-    while (n2 <= 4000000)
-    {
-        if (n2 % 2 == 0)
-        {
-            sum += n2;
-        }
+	while (i <= 98)
+	{
+		if (f1o > 0)
+			printf("%lu", f1o);
+		initial0s = numLength(mx) - 1 - numLength(f1);
+		while (f1o > 0 && initial0s > 0)
+		{
+			printf("%i", 0);
+			initial0s--;
+		}
+		printf("%lu", f1);
 
-        n3 = n1 + n2;
-        n1 = n2;
-        n2 = n3;
-    }
+		tmp = (f1 + f2) % mx;
+		tmpo = f1o + f2o + (f1 + f2) / mx;
+		f1 = f2;
+		f1o = f2o;
+		f2 = tmp;
+		f2o = tmpo;
 
-    printf("%ld\n", sum);
-
-    return (0);
+		if (i != 98)
+			printf(", ");
+		else
+			printf("\n");
+		i++;
+	}
+	return (0);
 }
+
