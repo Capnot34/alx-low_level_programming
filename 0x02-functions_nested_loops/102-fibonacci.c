@@ -10,24 +10,21 @@
 
 int main(void)
 {
-	int sum = 0;
+	int count = 50;
+	int num1 = 1;
+	int num2 = 2;
+	int fib_num;
 
-	 for (int i = 0; i < 1024; i++)
-	 {
-		 if (i % 3 == 0 || i % 5 == 0)
-		 {
-			 sum += i;
-		 }
-	 }
+	printf("%d, %d, ", num1, num2);
 
-	 int digit;
-	  while (sum > 0)
-	  {
-		  digit = sum % 10;
-		  putchar(digit + '0');
-		   sum /= 10;
-	  }
-	  putchar('\n');
+	for (int i = 2; i < count; i++)
+	{
+		fib_num = num1 + num2;
+		printf("%d, ", fib_num);
+		num1 = num2;
+		num2 = fib_num;
+	}
+	printf("\");
 
-	  return (0);
+	return (0);
 }
