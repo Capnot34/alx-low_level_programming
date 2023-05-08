@@ -10,21 +10,24 @@
 
 int main(void)
 {
-	int count = 50;
-	int num1 = 1;
-	int num2 = 2;
-	int fib_num;
+	int inc;
 
-	printf("%d, %d, ", num1, num2);
+	unsigned long n1 = 0, n2 = 1, n3;
 
-	for (int i = 2; i < count; i++)
+	for (inc = 0; inc < 50; inc++)
 	{
-		fib_num = num1 + num2;
-		printf("%d, ", fib_num);
-		num1 = num2;
-		num2 = fib_num;
+		n3 = n1 + n2;
+		printf("%lu", n3);
+
+		n1 = n2;
+		n2 = n3;
+
+		if (inc == 49)
+			printf("\n");
+		else
+			printf(", ");
+
 	}
-	printf("\");
 
 	return (0);
 }
