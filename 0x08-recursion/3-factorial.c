@@ -14,10 +14,10 @@ int factorial(int n)
 	}
 	else if (n == 0)/* base case */
 	{
-		return(1);
+		return (1);
 	}
 	else /* recursive case */
 	{
-		return(n * factorial(n -1));
+		return (n * factorial(n -1));
 	}
 }
