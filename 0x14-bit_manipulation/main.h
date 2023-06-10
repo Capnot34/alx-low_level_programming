@@ -10,6 +10,6 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m);
 int _atoi(const char *s);
 int _putchar(char c);
 int get_endianness(void);
-void find_password_and_save();
+void find_password_and_save(void);
 
 #endif /* MAIN_H */
