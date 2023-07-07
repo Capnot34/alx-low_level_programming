@@ -6,12 +6,21 @@
  */
 void print_binary(unsigned long int n)
 {
-	int i;
-    int size = sizeof(int) * 8;  // Assuming integers are 32 bits
+	int i, count = 0;
+	unsigned long int current;
 
-    for (i = size - 1; i >= 0; i--) {
-        int bit = (num >> i) & 1;
-        char c = bit + '0';
-        write(1, &c, 1);  // Writes the character directly to stdout
-    }
+	for (i = 63; i >= 0; i--)
+	{
+		current = n >> i;
+
+		if (current & 1)
+		{
+			_putchar('1');
+			count++;
+		}
+		else if (count)
+			_putchar('0');
+	}
+	if (!count)
+		_putchar('0');
 }
