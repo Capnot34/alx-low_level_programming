@@ -1,17 +1,16 @@
 #include "main.h"
 
 /**
- * main - copies the content of a file to another file
- * @argc: number of arguments passed to the program
- * @argv: array of arguments
+ * main - Copies the content of a source file to a destination file
+ * @argc: Number of arguments passed to the program
+ * @argv: Array of arguments
  *
  * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int fd_r, fd_w;
-	ssize_t bytes_read, bytes_written;
-	char buffer[BUFSIZ];
+	int fd_r, fd_w, x, m, n;
+	char buf[BUFSIZ];
 
 	if (argc != 3)
 	{
@@ -20,41 +19,37 @@ int main(int argc, char *argv[])
 	}
 
 	fd_r = open(argv[1], O_RDONLY);
-	if (fd_r == -1)
+	if (fd_r < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Unable to read from file %s\n", argv[1]);
 		exit(98);
 	}
 
 	fd_w = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (fd_w == -1)
+	while ((x = read(fd_r, buf, BUFSIZ)) > 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		close(fd_r);
-		exit(99);
-	}
-
-	while ((bytes_read = read(fd_r, buffer, BUFSIZ)) > 0)
-	{
-		bytes_written = write(fd_w, buffer, bytes_read);
-		if (bytes_written == -1 || bytes_written != bytes_read)
+		if (fd_w < 0 || write(fd_w, buf, x) != x)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Unable to write to %s\n", argv[2]);
 			close(fd_r);
-			close(fd_w);
 			exit(99);
 		}
 	}
 
-	if (bytes_read == -1)
+	if (x < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Unable to read from file %s\n", argv[1]);
 		exit(98);
 	}
 
-	if (close(fd_r) == -1 || close(fd_w) == -1)
+	m = close(fd_r);
+	n = close(fd_w);
+	if (m < 0 || n < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd\n");
+		if (m < 0)
+			dprintf(STDERR_FILENO, "Error: Unable to close file descriptor %d\n", fd_r);
+		if (n < 0)
+			dprintf(STDERR_FILENO, "Error: Unable to close file descriptor %d\n", fd_w);
 		exit(100);
 	}
 
