@@ -5,27 +5,31 @@
  * @ht: The hash table.
  * @key: The key.
  * @value: The value.
- * Description: If the key already exists, the value is updated. Otherwise, the
- * key/value pair is added to the hash table.
- * The function returns 1 on success,
- * and 0 on failure.
  *
  * Return: 1 on success, 0 on failure.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int idx;
-	hash_node_t *current, *new_node;
+	hash_node_t *new_node, *current;
 
 	if (!ht || !key || !value || strlen(key) == 0)
 		return (0);
 
 	idx = key_index((const unsigned char *)key, ht->size);
 
-	for (current = ht->array[idx]; current; current = current->next)
+	current = ht->array[idx];
+	while (current)
 	{
 		if (strcmp(current->key, key) == 0)
-			return (update_node_value(current, value));
+		{
+			free(current->value);
+			current->value = strdup(value);
+			if (!current->value)
+				return (0);
+			return (1);
+		}
+		current = current->next;
 	}
 
 	new_node = malloc(sizeof(hash_node_t));
@@ -46,7 +50,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		free(new_node);
 		return (0);
 	}
+
 	new_node->next = ht->array[idx];
 	ht->array[idx] = new_node;
+
 	return (1);
 }
